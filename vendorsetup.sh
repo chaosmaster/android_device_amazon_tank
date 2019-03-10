@@ -1,1 +1,3 @@
-add_lunch_combo cm_ford-userdebug
+add_lunch_combo omni_tank-userdebug
+add_lunch_combo omni_tank-eng
+add_lunch_combo omni_tank-user

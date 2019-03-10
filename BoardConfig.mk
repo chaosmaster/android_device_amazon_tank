@@ -1,23 +1,23 @@
 BOARD_VENDOR := amazon
 
 # headers
-TARGET_SPECIFIC_HEADER_PATH := device/amazon/ford/include
+TARGET_SPECIFIC_HEADER_PATH := device/amazon/tank/include
 
 # inherit from the proprietary version
--include vendor/amazon/ford/BoardConfigVendor.mk
+-include vendor/amazon/tank/BoardConfigVendor.mk
 
-TARGET_OTA_ASSERT_DEVICE := ford
+TARGET_OTA_ASSERT_DEVICE := tank
 
 
 # Platform
 TARGET_BOARD_PLATFORM := mt8127
 TARGET_BOARD_PLATFORM_GPU := mali-450mp4
-TARGET_BOOTLOADER_BOARD_NAME := ford
+TARGET_BOOTLOADER_BOARD_NAME := tank
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
-TARGET_USE_BUILT_BOOTIMAGE := device/amazon/ford/boot.img
+TARGET_USE_BUILT_BOOTIMAGE := device/amazon/tank/boot.img
 
 # Architecture
 TARGET_ARCH := arm
@@ -33,20 +33,22 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x04000000 --tags_offset 0x00000100
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_PREBUILT_KERNEL := device/amazon/ford/kernel
-TARGET_KERNEL_SOURCE := kernel/amazon/ford
-TARGET_KERNEL_CONFIG := ford_cyanogenmod_defconfig
-TARGET_KERNEL_VARIANT_CONFIG := ford_cyanogenmod_defconfig
+
+#TARGET_NO_KERNEL := true
+TARGET_PREBUILT_KERNEL := device/amazon/tank/kernel
+#TARGET_KERNEL_SOURCE := kernel/amazon/tank
+#TARGET_KERNEL_CONFIG := tank_cyanogenmod_defconfig
+#TARGET_KERNEL_VARIANT_CONFIG := tank_cyanogenmod_defconfig
 
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
 
 # Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DREFRESH_RATE=60
-COMMON_GLOBAL_CFLAGS += -DAMAZON_LOG -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+TARGET_LOCAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_LOCAL_CPPFLAGS += -DMTK_HARDWARE -mfpu=neon -mfloat-abi=softfp
+COMMON_LOCAL_CFLAGS += -DMTK_HARDWARE -DREFRESH_RATE=60
+COMMON_LOCAL_CFLAGS += -DAMAZON_LOG -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
+COMMON_LOCAL_CFLAGS += -DNO_SECURE_DISCARD
 
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -63,10 +65,10 @@ WIFI_DRIVER_FW_PATH_STA:=P2P
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/amazon/ford/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/amazon/tank/bluetooth
 
 # Graphics
-BOARD_EGL_CFG := device/amazon/ford/egl.cfg
+BOARD_EGL_CFG := device/amazon/tank/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_OVERLAY := true
@@ -94,21 +96,25 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto
 
 # TWRP
 RECOVERY_VARIANT := twrp
-DEVICE_RESOLUTION := 600x1024
+#DEVICE_RESOLUTION := 600x1024
 TW_EXCLUDE_MTP := false
 RECOVERY_SDCARD_ON_DATA := true
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_PREBUILT_RECOVERY_KERNEL := device/amazon/ford/kernel
-TARGET_RECOVERY_INITRC := device/amazon/ford/recovery/root/init.rc
-TARGET_RECOVERY_FSTAB := device/amazon/ford/recovery/root/recovery.fstab
+TARGET_PREBUILT_RECOVERY_KERNEL := device/amazon/tank/kernel
+TARGET_RECOVERY_INITRC := device/amazon/tank/recovery/root/init.rc
+TARGET_RECOVERY_FSTAB := device/amazon/tank/recovery/root/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
-TW_THEME := landscape_mdpi
+#TW_THEME := portrait_mdpi
+TW_THEME := landscape_hdpi
 #TWRP_EVENT_LOGGING := true
-RECOVERY_TOUCHSCREEN_SWAP_XY := true
+#RECOVERY_TOUCHSCREEN_SWAP_XY := false
 #RECOVERY_GRAPHICS_USE_LINELENGTH := true
 #RECOVERY_TOUCHSCREEN_FLIP_Y := true 
-RECOVERY_TOUCHSCREEN_FLIP_X := true
-BOARD_HAS_FLIPPED_SCREEN := true
-
+#RECOVERY_TOUCHSCREEN_FLIP_X := true
+#BOARD_HAS_FLIPPED_SCREEN := true
+TW_AMONET := true
+TW_NO_BATT_PERCENT := true
+TW_NO_SCREEN_TIMEOUT := true
+BOARD_HAS_NO_REAL_SDCARD := true

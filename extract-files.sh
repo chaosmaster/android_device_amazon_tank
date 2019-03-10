@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VENDOR=amazon
-DEVICE=ford
+DEVICE=tank
 
 if [ $# -eq 1 ]; then
     COPY_FROM=$1

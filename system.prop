@@ -39,7 +39,7 @@ ro.sys.usb.bicr=yes
 ro.sys.usb.charging.only=yes
 
 # smartvolume
-ro.smartvolume.config=/system/vendor/smartvolume/ford/
+ro.smartvolume.config=/system/vendor/smartvolume/austin/
 ro.config.notification_sound=Verso.ogg
 
 ro.sf.hwrotation=270
