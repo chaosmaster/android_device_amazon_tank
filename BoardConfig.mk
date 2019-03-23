@@ -115,6 +115,8 @@ TW_THEME := landscape_hdpi
 #RECOVERY_TOUCHSCREEN_FLIP_X := true
 #BOARD_HAS_FLIPPED_SCREEN := true
 TW_AMONET := true
+TW_AMONET_MICROLOADER_SRC := device/amazon/tank/recovery/microloader.cpp
 TW_NO_BATT_PERCENT := true
 TW_NO_SCREEN_TIMEOUT := true
 BOARD_HAS_NO_REAL_SDCARD := true
+
